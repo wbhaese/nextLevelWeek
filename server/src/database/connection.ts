@@ -10,7 +10,8 @@ const connection = knex({
         //ele cria a URL 
         //__dirname: retorna o diretório para o database neste caso
         filename: path.resolve(__dirname, 'database.sqlite'), 
-    }
+    },
+    useNullAsDefault: true,
 });
 //antes de criar o banco, precisamos identificar as entidades/tabelas do DB
     //no nosso caso teremos:

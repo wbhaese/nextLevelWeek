@@ -4,7 +4,7 @@ module.exports = {//não dá para ser esado com export default
     client: 'sqlite3',
     connection: {
         //no path.resolve, é necessário colocar a pasta, pois neste caso, este arquivo não está na mesma pasta
-        filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'), 
+        filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite3'), 
     },
     migrations: {
         directory: path.resolve(__dirname, 'src', 'database', 'migrations') 

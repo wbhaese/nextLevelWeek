@@ -1,21 +1,26 @@
 import express from 'express';
-import knex from './database/connection';
+
+import PointsController from './controllers/PointsController';
+import ItemsController from './controllers/ItemsController';
+
+
 
 const routes = express.Router();
+const pointsController = new PointsController();
+const itemsController = new ItemsController();
 
-routes.get('/items', async (request, response) => { //'/'acessará a rpta raiz: localhost:3000
-    //vamos precisar importar a conexão com o banco
-    //é precisa usar o 'await' antes do knex e async na função
-    const items = await knex('items').select('*');//busca todos os campos do banco
-    
-    const serializedItems = items.map(item => {
-        return {
-            title: item.title,
-            image_url: item.image
-        };
-    });
+//padrões de actions para as controllers:
+//index, show, create, update and delete
 
-    return response.json(serializedItems);
-});
+routes.get('/items', itemsController.index);
+
+routes.post('/points', pointsController.create);
+
+//abaixo listará vários pontos de controle
+routes.get('/points', pointsController.index);
+
+//para lista os pontos, vamos usar o requestParams, neste caso, o ID
+routes.get('/points/:id', pointsController.show);
+
 
 export default routes;

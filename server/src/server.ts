@@ -54,9 +54,12 @@
 //DELETE: Remove uma informação
 
 import express from 'express'; 
+import cors from 'cors'; //Quando ficar com alert de erro, normalmente é erro na definição de tipos
 import routes from './routes';//se for um arquivo fora do node_modules, precisa do './' antes
 import path from 'path';
 const app = express();
+
+app.use(cors);
 
 app.use(express.json());
 
@@ -121,6 +124,8 @@ app.use(routes); // instancia o outro arquivo
 // foram criadas a pasta de imagens. Precisamos adicionar o seguinte código neste mesmo arquivo:
 //no arquivo routes.ts, vamos adicionar novas rotas
 
-app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))//foi usada a função express.static() para acessar as imagens. Pode ser usada também para download de PDFs, etc.
+app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));//foi usada a função express.static() para acessar as imagens. Pode ser usada também para download de PDFs, etc.
 
-app.listen(3333);
+app.listen(3333, () => {
+    console.log('Server Running on http://localhost:3333');
+});
