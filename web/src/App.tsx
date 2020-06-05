@@ -1,25 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Routes from './routes';
+
+//JSX: Sintaxe de XML dentro do JS
+
 function App() {
+
+  //sempre que houver mais de uma linha de retorno, deve-se usar parênteses
+  //caso haja apenas uma, não precisa
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes />
+
   );
 }
 
